@@ -24,3 +24,4 @@ logs
 .env.*
 !.env.example
 !.env.template
+.vercel
