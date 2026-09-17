@@ -25,9 +25,9 @@ export default defineNuxtConfig({
     },
     public: {
       shopware: {
-        endpoint: "https://fitness.bedarf.de/store-api/",
-        accessToken: "SWSCRM9QNEFNRHFTC2TMOG9ZAQ",
-        devStorefrontUrl: "https://frontends-demo.vercel.app",
+        endpoint: "https://frontenddemo.bedarf.de/store-api/",
+        accessToken: "SWSCQWK0CKVVQ3NBMVLUBFPRWG",
+        devStorefrontUrl: "https://frontenddemo.bedarf.de",
         cacheableReads: true,
         // Uses the Shopware context cookie during SSR, so the first render matches
         // the user's currency. Disable shared HTML cache/ISR for these pages.
