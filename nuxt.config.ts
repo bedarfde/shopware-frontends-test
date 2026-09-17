@@ -28,7 +28,9 @@ export default defineNuxtConfig({
         endpoint: "https://frontenddemo.bedarf.de/store-api/",
         accessToken: "SWSCQWK0CKVVQ3NBMVLUBFPRWG",
         devStorefrontUrl: "https://frontenddemo.bedarf.de",
-        cacheableReads: true,
+        // This backend ignores `_criteria` on the cacheable GET read routes and
+        // returns unfiltered results, which breaks SEO path resolution.
+        cacheableReads: false,
         // Uses the Shopware context cookie during SSR, so the first render matches
         // the user's currency. Disable shared HTML cache/ISR for these pages.
         // useUserContextInSSR: true,
@@ -68,7 +70,11 @@ export default defineNuxtConfig({
         "fflate",
         "html-to-ast",
         "js-cookie",
-        "xss",
+        // CJS-only, and pnpm keeps it out of the root node_modules, so the bare
+        // id the layer asks for never resolves and Vite serves the raw CJS file
+        // (`SyntaxError: does not provide an export named 'default'`).
+        // Vite's `importer > dep` form resolves it from the layer instead.
+        "@shopware/cms-base-layer > xss",
       ],
     },
   },

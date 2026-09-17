@@ -38,11 +38,9 @@ const { data, error } = await useAsyncData(
       return await search(props.navigationId, {
         withCmsAssociations: true,
         associations: {
-          openGraphMedia: {
-            associations: {
-              thumbnails: {},
-            },
-          },
+          // `openGraphMedia` only exists on newer Shopware versions; requesting it
+          // against an older backend fails the whole product read. `useCmsHead`
+          // falls back to the cover media for og:image.
           seoUrls: {},
         },
       });
